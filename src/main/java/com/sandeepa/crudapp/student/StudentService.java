@@ -1,6 +1,7 @@
 package com.sandeepa.crudapp.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -23,6 +24,18 @@ public class StudentService {
 
     public List<Student> getStudents() {
         return studentRepository.findAll();
+    }
+
+    public ResponseEntity<Student> findStudentById(Long studentId) {
+        Student studentById = studentRepository.findById(studentId).orElse(null);
+
+        if (studentById != null) {
+            return ResponseEntity.ok(studentById);
+        } else {
+//            return ResponseEntity.notFound().build();
+            throw new IllegalStateException("No student registered under student id " + studentId + "!");
+        }
+
     }
 
     public void addNewStudent(Student student) {
