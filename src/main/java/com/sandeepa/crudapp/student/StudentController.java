@@ -1,6 +1,7 @@
 package com.sandeepa.crudapp.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +20,11 @@ public class StudentController {
     @GetMapping
     public List<Student> getStudents() {
         return studentService.getStudents();
+    }
 
+    @GetMapping(path = "{studentId}")
+    public ResponseEntity<Student> getStudentById(@PathVariable("studentId") Long studentId) {
+        return studentService.findStudentById(studentId);
     }
 
     @PostMapping
