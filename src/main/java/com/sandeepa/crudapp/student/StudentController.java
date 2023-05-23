@@ -1,5 +1,7 @@
 package com.sandeepa.crudapp.student;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +12,8 @@ import java.util.List;
 @RequestMapping(path = "api/v1/student")
 public class StudentController {
 
+    Logger logger = LoggerFactory.getLogger(StudentController.class);
+
     private final StudentService studentService;
 
     @Autowired
@@ -19,6 +23,13 @@ public class StudentController {
 
     @GetMapping
     public List<Student> getStudents() {
+
+        logger.trace("This is a TRACE Log"); //By default, it is not shown in the console. Check the application properties file.
+        logger.info("This is a INFO Log");
+        logger.debug("This is a DEBUG Log");
+
+        logger.trace("Accessed getStudents method in StudentController");
+
         return studentService.getStudents();
     }
 

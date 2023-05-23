@@ -1,5 +1,7 @@
 package com.sandeepa.crudapp.student;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,8 @@ import java.util.Optional;
 @Service
 public class StudentService {
 
+    Logger logger = LoggerFactory.getLogger(StudentService.class);
+
     private final StudentRepository studentRepository;
 
     @Autowired
@@ -23,6 +27,9 @@ public class StudentService {
 
 
     public List<Student> getStudents() {
+
+        logger.trace("Accessed getStudents method in StudentService");
+
         return studentRepository.findAll();
     }
 
