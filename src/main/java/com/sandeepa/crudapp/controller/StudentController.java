@@ -1,5 +1,7 @@
-package com.sandeepa.crudapp.student;
+package com.sandeepa.crudapp.controller;
 
+import com.sandeepa.crudapp.dto.StudentDTO;
+import com.sandeepa.crudapp.service.StudentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ public class StudentController {
     }
 
     @GetMapping
-    public List<Student> getStudents() {
+    public List<StudentDTO> getStudents() {
 
         logger.trace("This is a TRACE Log"); //By default, it is not shown in the console. Check the application properties file.
         logger.info("This is a INFO Log");
@@ -34,12 +36,12 @@ public class StudentController {
     }
 
     @GetMapping(path = "{studentId}")
-    public ResponseEntity<Student> getStudentById(@PathVariable("studentId") Long studentId) {
+    public ResponseEntity<StudentDTO> getStudentById(@PathVariable("studentId") Long studentId) {
         return studentService.findStudentById(studentId);
     }
 
     @PostMapping
-    public void registerNewStudent(@RequestBody Student student) {
+    public void registerNewStudent(@RequestBody StudentDTO student) {
         studentService.addNewStudent(student);
     }
 

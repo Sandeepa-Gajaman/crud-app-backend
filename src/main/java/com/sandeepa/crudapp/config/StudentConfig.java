@@ -1,5 +1,7 @@
-package com.sandeepa.crudapp.student;
+package com.sandeepa.crudapp.config;
 
+import com.sandeepa.crudapp.dto.StudentDTO;
+import com.sandeepa.crudapp.repository.StudentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,13 +17,13 @@ public class StudentConfig {
     @Bean
     CommandLineRunner commandLineRunner(StudentRepository repository) {
         return args -> {
-            Student sandu = new Student(
+            StudentDTO sandu = new StudentDTO(
                     "Sandu",
                     "sandu@gmail.com",
                     LocalDate.of(1990, MAY,5)
             );
 
-            Student amal = new Student(
+            StudentDTO amal = new StudentDTO(
                     "amal",
                     "amal@gmail.com",
                     LocalDate.of(1995, JULY,12)
