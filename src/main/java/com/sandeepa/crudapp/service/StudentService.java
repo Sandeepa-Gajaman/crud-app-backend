@@ -1,6 +1,6 @@
 package com.sandeepa.crudapp.service;
 
-import com.sandeepa.crudapp.dto.StudentDTO;
+import com.sandeepa.crudapp.dto.StudentDto;
 import com.sandeepa.crudapp.repository.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,15 +26,15 @@ public class StudentService {
     }
 
 
-    public List<StudentDTO> getStudents() {
+    public List<StudentDto> getStudents() {
 
         logger.trace("Accessed getStudents method in StudentService");
 
         return studentRepository.findAll();
     }
 
-    public ResponseEntity<StudentDTO> findStudentById(Long studentId) {
-        StudentDTO studentById = studentRepository.findById(studentId).orElse(null);
+    public ResponseEntity<StudentDto> findStudentById(Long studentId) {
+        StudentDto studentById = studentRepository.findById(studentId).orElse(null);
 
         if (studentById != null) {
             return ResponseEntity.ok(studentById);
@@ -45,8 +45,8 @@ public class StudentService {
 
     }
 
-    public void addNewStudent(StudentDTO student) {
-        Optional<StudentDTO> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
+    public void addNewStudent(StudentDto student) {
+        Optional<StudentDto> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
 
         if (studentOptional.isPresent()) {
             throw new IllegalStateException("Email already exists!");
@@ -67,7 +67,7 @@ public class StudentService {
 
     @Transactional
     public void updateStudent(Long studentId, String name, String email) {
-        StudentDTO student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException(
+        StudentDto student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException(
                 "Student with id " + studentId + " does not exists!"
         ));
 
@@ -76,7 +76,7 @@ public class StudentService {
         }
 
         if (email != null && email.length() > 0 && !Objects.equals(student.getEmail(), email)) {
-            Optional<StudentDTO> studentOptional = studentRepository.findStudentByEmail(email);
+            Optional<StudentDto> studentOptional = studentRepository.findStudentByEmail(email);
 
             if (studentOptional.isPresent()) {
                 throw new IllegalStateException("Email already taken!");
