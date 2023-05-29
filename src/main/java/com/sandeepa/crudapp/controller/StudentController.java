@@ -39,7 +39,15 @@ public class StudentController {
 
     @GetMapping(path = "{studentId}")
     public ResponseEntity<StudentEntity> getStudentById(@PathVariable("studentId") Long studentId) {
-        return studentService.findStudentById(studentId);
+
+        StudentEntity studentById = studentService.findStudentById(studentId);
+
+        if(studentById != null){
+            return ResponseEntity.ok(studentById);
+        } else {
+//            return ResponseEntity.notFound().build();
+            throw new IllegalStateException("No student registered under student id " + studentId + "!");
+        }
     }
 
     @PostMapping

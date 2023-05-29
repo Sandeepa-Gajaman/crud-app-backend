@@ -34,17 +34,9 @@ public class StudentService {
     }
 
     //get school data
-    
-    public ResponseEntity<StudentEntity> findStudentById(Long studentId) {
-        StudentEntity studentById = studentRepository.findById(studentId).orElse(null);
 
-        if (studentById != null) {
-            return ResponseEntity.ok(studentById);
-        } else {
-//            return ResponseEntity.notFound().build();
-            throw new IllegalStateException("No student registered under student id " + studentId + "!");
-        }
-
+    public StudentEntity findStudentById(Long studentId) {
+        return studentRepository.findById(studentId).orElse(null);
     }
 
     public void addNewStudent(StudentEntity student) {
