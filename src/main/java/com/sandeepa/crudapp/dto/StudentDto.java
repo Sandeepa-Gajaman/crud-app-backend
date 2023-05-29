@@ -3,9 +3,12 @@ package com.sandeepa.crudapp.dto;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class StudentDTO {
+@Table(name = "student")
+public class StudentDto {
 
     @Id
     @SequenceGenerator(
@@ -25,17 +28,17 @@ public class StudentDTO {
     @Transient
     private Integer age;
 
-    public StudentDTO() {
+    public StudentDto() {
     }
 
-    public StudentDTO(Long id, String name, String email, LocalDate dob) {
+    public StudentDto(Long id, String name, String email, LocalDate dob) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.dob = dob;
     }
 
-    public StudentDTO(String name, String email, LocalDate dob) {
+    public StudentDto(String name, String email, LocalDate dob) {
         this.name = name;
         this.email = email;
         this.dob = dob;
