@@ -1,14 +1,12 @@
-package com.sandeepa.crudapp.dto;
+package com.sandeepa.crudapp.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "student")
-public class StudentDto {
+public class StudentEntity {
 
     @Id
     @SequenceGenerator(
@@ -28,17 +26,17 @@ public class StudentDto {
     @Transient
     private Integer age;
 
-    public StudentDto() {
+    public StudentEntity() {
     }
 
-    public StudentDto(Long id, String name, String email, LocalDate dob) {
+    public StudentEntity(Long id, String name, String email, LocalDate dob) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.dob = dob;
     }
 
-    public StudentDto(String name, String email, LocalDate dob) {
+    public StudentEntity(String name, String email, LocalDate dob) {
         this.name = name;
         this.email = email;
         this.dob = dob;

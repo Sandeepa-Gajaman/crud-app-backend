@@ -1,7 +1,7 @@
 package com.sandeepa.crudapp.service;
 
-import com.sandeepa.crudapp.dto.StudentDto;
-import com.sandeepa.crudapp.repository.StudentRepository;
+import com.sandeepa.crudapp.entities.StudentEntity;
+import com.sandeepa.crudapp.repositories.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,15 +26,17 @@ public class StudentService {
     }
 
 
-    public List<StudentDto> getStudents() {
+    public List<StudentEntity> getStudents() {
 
         logger.trace("Accessed getStudents method in StudentService");
 
         return studentRepository.findAll();
     }
 
-    public ResponseEntity<StudentDto> findStudentById(Long studentId) {
-        StudentDto studentById = studentRepository.findById(studentId).orElse(null);
+    //get school data
+    
+    public ResponseEntity<StudentEntity> findStudentById(Long studentId) {
+        StudentEntity studentById = studentRepository.findById(studentId).orElse(null);
 
         if (studentById != null) {
             return ResponseEntity.ok(studentById);
@@ -45,8 +47,8 @@ public class StudentService {
 
     }
 
-    public void addNewStudent(StudentDto student) {
-        Optional<StudentDto> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
+    public void addNewStudent(StudentEntity student) {
+        Optional<StudentEntity> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
 
         if (studentOptional.isPresent()) {
             throw new IllegalStateException("Email already exists!");
@@ -67,7 +69,7 @@ public class StudentService {
 
     @Transactional
     public void updateStudent(Long studentId, String name, String email) {
-        StudentDto student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException(
+        StudentEntity student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException(
                 "Student with id " + studentId + " does not exists!"
         ));
 
@@ -76,7 +78,7 @@ public class StudentService {
         }
 
         if (email != null && email.length() > 0 && !Objects.equals(student.getEmail(), email)) {
-            Optional<StudentDto> studentOptional = studentRepository.findStudentByEmail(email);
+            Optional<StudentEntity> studentOptional = studentRepository.findStudentByEmail(email);
 
             if (studentOptional.isPresent()) {
                 throw new IllegalStateException("Email already taken!");
