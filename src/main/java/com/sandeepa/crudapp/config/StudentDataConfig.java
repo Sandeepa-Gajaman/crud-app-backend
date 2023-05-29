@@ -18,19 +18,9 @@ public class StudentDataConfig {
     @Bean
     CommandLineRunner commandLineRunner1(SchoolRepository repository) {
         return args -> {
-            SchoolDto mahanama = new SchoolDto(
-                    "Mahanama Collage",
-                    "Colombo 03"
-            );
-
-            SchoolDto royal = new SchoolDto(
-                    "Royal Collage",
-                    "Colombo 07"
-            );
-
             StudentDto sandu = new StudentDto(
-                    "Sandu",
-                    "sandu@gmail.com",
+                    "Sandun",
+                    "sandun@gmail.com",
                     LocalDate.of(1990, MAY,5)
             );
 
@@ -44,6 +34,17 @@ public class StudentDataConfig {
                     "Kasun",
                     "kasun@gmail.com",
                     LocalDate.of(1998, JULY,12)
+            );
+
+            //Schools
+            SchoolDto mahanama = new SchoolDto(
+                    "Mahanama Collage",
+                    "Colombo 03"
+            );
+
+            SchoolDto royal = new SchoolDto(
+                    "Royal Collage",
+                    "Colombo 07"
             );
 
             mahanama.getSchoolName().add(sandu);
