@@ -1,5 +1,6 @@
 package com.sandeepa.crudapp.controller;
 
+import com.sandeepa.crudapp.dto.StudentDto;
 import com.sandeepa.crudapp.entities.StudentEntity;
 import com.sandeepa.crudapp.service.StudentService;
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -36,6 +38,11 @@ public class StudentController {
     }
 
     //New method for student details
+    @GetMapping(path = "/details")
+    public List<StudentDto> getStudentDetails() {
+
+        return studentService.getStudentDetails();
+    }
 
     @GetMapping(path = "{studentId}")
     public ResponseEntity<StudentEntity> getStudentById(@PathVariable("studentId") Long studentId) {

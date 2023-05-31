@@ -1,5 +1,7 @@
 package com.sandeepa.crudapp.service;
 
+import com.sandeepa.crudapp.dto.StudentDto;
+import com.sandeepa.crudapp.entities.SchoolEntity;
 import com.sandeepa.crudapp.entities.StudentEntity;
 import com.sandeepa.crudapp.repositories.StudentRepository;
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,7 +36,23 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    //get school data
+    public List<StudentDto> getStudentDetails() {
+
+        List<StudentEntity> studentEntities = studentRepository.findAll();
+        List<StudentDto> studentDetails = new ArrayList<>();
+
+        for (StudentEntity studentEntity : studentEntities) {
+            StudentDto dto = new StudentDto();
+            dto.setName(studentEntity.getName());
+            dto.setEmail(studentEntity.getEmail());
+            dto.setDob(studentEntity.getDob());
+            dto.setAge(studentEntity.getAge());
+            studentDetails.add(dto);
+        }
+
+        return studentDetails;
+
+    }
 
     public StudentEntity findStudentById(Long studentId) {
         return studentRepository.findById(studentId).orElse(null);
