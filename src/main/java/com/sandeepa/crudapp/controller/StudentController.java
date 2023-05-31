@@ -1,6 +1,7 @@
 package com.sandeepa.crudapp.controller;
 
 import com.sandeepa.crudapp.dto.StudentDto;
+import com.sandeepa.crudapp.entities.StudentEntity;
 import com.sandeepa.crudapp.service.StudentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -24,7 +26,7 @@ public class StudentController {
     }
 
     @GetMapping
-    public List<StudentDto> getStudents() {
+    public List<StudentEntity> getStudents() {
 
         logger.trace("This is a TRACE Log"); //By default, it is not shown in the console. Check the application properties file.
         logger.info("This is a INFO Log");
@@ -35,13 +37,28 @@ public class StudentController {
         return studentService.getStudents();
     }
 
+    //New method for student details
+    @GetMapping(path = "/details")
+    public List<StudentDto> getStudentDetails() {
+
+        return studentService.getStudentDetails();
+    }
+
     @GetMapping(path = "{studentId}")
-    public ResponseEntity<StudentDto> getStudentById(@PathVariable("studentId") Long studentId) {
-        return studentService.findStudentById(studentId);
+    public ResponseEntity<StudentEntity> getStudentById(@PathVariable("studentId") Long studentId) {
+
+        StudentEntity studentById = studentService.findStudentById(studentId);
+
+        if(studentById != null){
+            return ResponseEntity.ok(studentById);
+        } else {
+//            return ResponseEntity.notFound().build();
+            throw new IllegalStateException("No student registered under student id " + studentId + "!");
+        }
     }
 
     @PostMapping
-    public void registerNewStudent(@RequestBody StudentDto student) {
+    public void registerNewStudent(@RequestBody StudentEntity student) {
         studentService.addNewStudent(student);
     }
 

@@ -1,8 +1,8 @@
 package com.sandeepa.crudapp.config;
 
-import com.sandeepa.crudapp.dto.SchoolDto;
-import com.sandeepa.crudapp.dto.StudentDto;
-import com.sandeepa.crudapp.repository.SchoolRepository;
+import com.sandeepa.crudapp.entities.SchoolEntity;
+import com.sandeepa.crudapp.entities.StudentEntity;
+import com.sandeepa.crudapp.repositories.SchoolRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,31 +18,31 @@ public class StudentDataConfig {
     @Bean
     CommandLineRunner commandLineRunner1(SchoolRepository repository) {
         return args -> {
-            StudentDto sandu = new StudentDto(
+            StudentEntity sandu = new StudentEntity(
                     "Sandun",
                     "sandun@gmail.com",
                     LocalDate.of(1990, MAY,5)
             );
 
-            StudentDto amal = new StudentDto(
+            StudentEntity amal = new StudentEntity(
                     "Amal",
                     "amal@gmail.com",
                     LocalDate.of(1995, JULY,12)
             );
 
-            StudentDto kasun = new StudentDto(
+            StudentEntity kasun = new StudentEntity(
                     "Kasun",
                     "kasun@gmail.com",
                     LocalDate.of(1998, JULY,12)
             );
 
             //Schools
-            SchoolDto mahanama = new SchoolDto(
+            SchoolEntity mahanama = new SchoolEntity(
                     "Mahanama Collage",
                     "Colombo 03"
             );
 
-            SchoolDto royal = new SchoolDto(
+            SchoolEntity royal = new SchoolEntity(
                     "Royal Collage",
                     "Colombo 07"
             );
