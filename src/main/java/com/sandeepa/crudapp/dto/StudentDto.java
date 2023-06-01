@@ -8,6 +8,15 @@ public class StudentDto {
     private LocalDate dob;
     private Integer age;
 
+    public StudentDto() {
+    }
+
+    public StudentDto(String name, String email, LocalDate dob, Integer age) {
+        this.name = name;
+        this.email = email;
+        this.dob = dob;
+        this.age = age;
+    }
 
     public String getName() {
         return name;

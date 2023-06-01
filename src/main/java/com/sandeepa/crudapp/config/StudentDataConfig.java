@@ -47,9 +47,9 @@ public class StudentDataConfig {
                     "Colombo 07"
             );
 
-            mahanama.getSchoolName().add(sandu);
-            royal.getSchoolName().add(amal);
-            mahanama.getSchoolName().add(kasun);
+            mahanama.getStudents().add(sandu);
+            royal.getStudents().add(amal);
+            mahanama.getStudents().add(kasun);
 
             repository.saveAll(
                     List.of(mahanama,royal)

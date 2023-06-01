@@ -17,14 +17,14 @@ public class SchoolEntity {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "school_fk", referencedColumnName = "id")
-    List<StudentEntity> schoolName = new ArrayList<>();
+    List<StudentEntity> students = new ArrayList<>();
 
-    public List<StudentEntity> getSchoolName() {
-        return schoolName;
+    public List<StudentEntity> getStudents() {
+        return students;
     }
 
-    public void setSchoolName(List<StudentEntity> studentDTO) {
-        this.schoolName = studentDTO;
+    public void setStudents(List<StudentEntity> studentDTO) {
+        this.students = studentDTO;
     }
 
     public SchoolEntity() {
