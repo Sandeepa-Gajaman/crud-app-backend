@@ -1,7 +1,9 @@
 package com.sandeepa.crudapp.service;
 
 import com.sandeepa.crudapp.dto.StudentDto;
-import com.sandeepa.crudapp.repository.StudentRepository;
+import com.sandeepa.crudapp.entities.SchoolEntity;
+import com.sandeepa.crudapp.entities.StudentEntity;
+import com.sandeepa.crudapp.repositories.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,27 +29,37 @@ public class StudentService {
     }
 
 
-    public List<StudentDto> getStudents() {
+    public List<StudentEntity> getStudents() {
 
         logger.trace("Accessed getStudents method in StudentService");
 
         return studentRepository.findAll();
     }
 
-    public ResponseEntity<StudentDto> findStudentById(Long studentId) {
-        StudentDto studentById = studentRepository.findById(studentId).orElse(null);
+    public List<StudentDto> getStudentDetails() {
 
-        if (studentById != null) {
-            return ResponseEntity.ok(studentById);
-        } else {
-//            return ResponseEntity.notFound().build();
-            throw new IllegalStateException("No student registered under student id " + studentId + "!");
+        List<StudentEntity> studentEntities = studentRepository.findAll();
+        List<StudentDto> studentDetails = new ArrayList<>();
+
+        for (StudentEntity studentEntity : studentEntities) {
+            StudentDto dto = new StudentDto();
+            dto.setName(studentEntity.getName());
+            dto.setEmail(studentEntity.getEmail());
+            dto.setDob(studentEntity.getDob());
+            dto.setAge(studentEntity.getAge());
+            studentDetails.add(dto);
         }
+
+        return studentDetails;
 
     }
 
-    public void addNewStudent(StudentDto student) {
-        Optional<StudentDto> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
+    public StudentEntity findStudentById(Long studentId) {
+        return studentRepository.findById(studentId).orElse(null);
+    }
+
+    public void addNewStudent(StudentEntity student) {
+        Optional<StudentEntity> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
 
         if (studentOptional.isPresent()) {
             throw new IllegalStateException("Email already exists!");
@@ -67,7 +80,7 @@ public class StudentService {
 
     @Transactional
     public void updateStudent(Long studentId, String name, String email) {
-        StudentDto student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException(
+        StudentEntity student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException(
                 "Student with id " + studentId + " does not exists!"
         ));
 
@@ -76,7 +89,7 @@ public class StudentService {
         }
 
         if (email != null && email.length() > 0 && !Objects.equals(student.getEmail(), email)) {
-            Optional<StudentDto> studentOptional = studentRepository.findStudentByEmail(email);
+            Optional<StudentEntity> studentOptional = studentRepository.findStudentByEmail(email);
 
             if (studentOptional.isPresent()) {
                 throw new IllegalStateException("Email already taken!");

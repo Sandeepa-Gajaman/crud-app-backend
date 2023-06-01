@@ -1,4 +1,4 @@
-package com.sandeepa.crudapp.dto;
+package com.sandeepa.crudapp.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "school")
-public class SchoolDto {
+public class SchoolEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,20 +17,20 @@ public class SchoolDto {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "school_fk", referencedColumnName = "id")
-    List<StudentDto> schoolName = new ArrayList<>();
+    List<StudentEntity> schoolName = new ArrayList<>();
 
-    public List<StudentDto> getSchoolName() {
+    public List<StudentEntity> getSchoolName() {
         return schoolName;
     }
 
-    public void setSchoolName(List<StudentDto> studentDTO) {
+    public void setSchoolName(List<StudentEntity> studentDTO) {
         this.schoolName = studentDTO;
     }
 
-    public SchoolDto() {
+    public SchoolEntity() {
     }
 
-    public SchoolDto(String name, String address) {
+    public SchoolEntity(String name, String address) {
         this.name = name;
         this.address = address;
     }
