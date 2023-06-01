@@ -1,15 +1,14 @@
-package com.sandeepa.crudapp.controller;
+package com.sandeepa.crudapp.controllers;
 
-import com.sandeepa.crudapp.dto.StudentDto;
+import com.sandeepa.crudapp.dtos.StudentDto;
 import com.sandeepa.crudapp.entities.StudentEntity;
-import com.sandeepa.crudapp.service.StudentService;
+import com.sandeepa.crudapp.services.StudentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
