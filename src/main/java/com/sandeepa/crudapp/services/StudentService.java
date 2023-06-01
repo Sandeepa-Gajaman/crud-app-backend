@@ -1,13 +1,11 @@
-package com.sandeepa.crudapp.service;
+package com.sandeepa.crudapp.services;
 
-import com.sandeepa.crudapp.dto.StudentDto;
-import com.sandeepa.crudapp.entities.SchoolEntity;
+import com.sandeepa.crudapp.dtos.StudentDto;
 import com.sandeepa.crudapp.entities.StudentEntity;
 import com.sandeepa.crudapp.repositories.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

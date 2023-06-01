@@ -1,9 +1,10 @@
-package com.sandeepa.crudapp.service;
+package com.sandeepa.crudapp.services;
 
-import com.sandeepa.crudapp.dto.SchoolDto;
-import com.sandeepa.crudapp.dto.StudentDto;
+import com.sandeepa.crudapp.dtos.SchoolDto;
+import com.sandeepa.crudapp.dtos.StudentDto;
 import com.sandeepa.crudapp.entities.SchoolEntity;
 import com.sandeepa.crudapp.repositories.SchoolRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class SchoolService {
+
+    /*
+
     @Autowired
     private SchoolRepository schoolRepository;
+
+    Above is an example for field injection. Field injection is not recommended.
+    https://stackoverflow.com/questions/39890849/what-exactly-is-field-injection-and-how-to-avoid-it
+
+     */
+
+    private final SchoolRepository schoolRepository;
 
     public List<SchoolDto> getSchoolDetails() {
         List<SchoolEntity> schoolEntities = schoolRepository.findAll();

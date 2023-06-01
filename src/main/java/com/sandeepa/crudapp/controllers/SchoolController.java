@@ -1,8 +1,8 @@
-package com.sandeepa.crudapp.controller;
+package com.sandeepa.crudapp.controllers;
 
-import com.sandeepa.crudapp.dto.SchoolDto;
-import com.sandeepa.crudapp.dto.StudentDto;
-import com.sandeepa.crudapp.service.SchoolService;
+import com.sandeepa.crudapp.dtos.SchoolDto;
+import com.sandeepa.crudapp.services.SchoolService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +14,20 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/school")
+@AllArgsConstructor
 public class SchoolController {
 
     private final SchoolService schoolService;
+
+    /*
+    @AllArgsConstructor creates this constructor. @Autowired not necessary in this scenario.
 
     @Autowired
     public SchoolController(SchoolService schoolService) {
         this.schoolService = schoolService;
     }
+
+     */
 
     @GetMapping
     public List<SchoolDto> getSchoolDetails() {
