@@ -19,7 +19,9 @@ public class ClassEntity {
     @NonNull private String name;
 
     @OneToOne
-    @JoinColumn(name = "teacher_fk", referencedColumnName = "id")
+    @JoinColumn(name = "teacher_id", referencedColumnName = "id")
     private TeacherEntity teacher;
 
+    @OneToMany(mappedBy = "aClass", cascade = CascadeType.ALL)
+    private List<StudentEntity> students;
 }

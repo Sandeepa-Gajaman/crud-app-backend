@@ -27,7 +27,7 @@ public class TeacherEntity {
     private ClassEntity aClass;
 
     @ManyToOne
-    @JoinColumn(name = "school_fk", referencedColumnName = "id")
+    @JoinColumn(name = "school_id", referencedColumnName = "id")
     private SchoolEntity teacherSchool;
 
     public Integer getAge() {

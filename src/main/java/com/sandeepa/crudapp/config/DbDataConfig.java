@@ -43,42 +43,19 @@ public class DbDataConfig {
             starlightAcademy.setName("Starlight Academy");
             starlightAcademy.setAddress("U.S");
 
-            SchoolEntity ravenwoodAcademy = new SchoolEntity();
-            ravenwoodAcademy.setName("Ravenwood Academy");
-            ravenwoodAcademy.setAddress("U.K");
+            SchoolEntity evergreenHigh = new SchoolEntity();
+            evergreenHigh.setName("Evergreen High");
+            evergreenHigh.setAddress("U.K");
 
             schoolRepository.saveAll(
-                    List.of(starlightAcademy,ravenwoodAcademy)
-            );
-
-            //Students
-            StudentEntity grover = new StudentEntity();
-            grover.setName("Grover");
-            grover.setEmail("grover@gmail.com");
-            grover.setDob(LocalDate.of(1998, JULY,12));
-            grover.setStudentSchool(ravenwoodAcademy);
-
-            StudentEntity annabeth = new StudentEntity();
-            annabeth.setName("Annabeth");
-            annabeth.setEmail("annabeth@gmail.com");
-            annabeth.setDob(LocalDate.of(1997, JANUARY,12));
-            annabeth.setStudentSchool(starlightAcademy);
-
-            StudentEntity tom = new StudentEntity();
-            tom.setName("Tom");
-            tom.setEmail("tom@gmail.com");
-            tom.setDob(LocalDate.of(1995, APRIL,12));
-            tom.setStudentSchool(ravenwoodAcademy);
-
-            studentRepository.saveAll(
-                    List.of(grover, annabeth, tom)
+                    List.of(starlightAcademy,evergreenHigh)
             );
 
             //Teachers
             TeacherEntity professorAlastairHawthorne = new TeacherEntity();
             professorAlastairHawthorne.setName("Professor Alastair Hawthorne");
             professorAlastairHawthorne.setDob(LocalDate.of(1957, MAY, 11));
-            professorAlastairHawthorne.setTeacherSchool(ravenwoodAcademy);
+            professorAlastairHawthorne.setTeacherSchool(evergreenHigh);
 
             TeacherEntity missCassandraEvergreen = new TeacherEntity();
             missCassandraEvergreen.setName("Miss Cassandra Evergreen");
@@ -88,12 +65,12 @@ public class DbDataConfig {
             TeacherEntity professorTheodoreBlackthorn = new TeacherEntity();
             professorTheodoreBlackthorn.setName("Professor Theodore Blackthorn");
             professorTheodoreBlackthorn.setDob(LocalDate.of(1957, MAY, 24));
-            professorTheodoreBlackthorn.setTeacherSchool(ravenwoodAcademy);
+            professorTheodoreBlackthorn.setTeacherSchool(starlightAcademy);
 
             TeacherEntity professorReginaldFirestone = new TeacherEntity();
             professorReginaldFirestone.setName("Professor Reginald Firestone");
             professorReginaldFirestone.setDob(LocalDate.of(1957, MAY, 12));
-            professorReginaldFirestone.setTeacherSchool(ravenwoodAcademy);
+            professorReginaldFirestone.setTeacherSchool(evergreenHigh);
 
             teacherRepository.saveAll(
                     List.of(professorAlastairHawthorne,missCassandraEvergreen,professorTheodoreBlackthorn,
@@ -119,6 +96,46 @@ public class DbDataConfig {
 
             classRepository.saveAll(
                     List.of(mythology, darkArtsDefense, cryptology, advancedAlchemy)
+            );
+
+            //Students
+            StudentEntity grover = new StudentEntity();
+            grover.setName("Grover");
+            grover.setEmail("grover@gmail.com");
+            grover.setDob(LocalDate.of(1998, JULY,12));
+            grover.setStudentSchool(evergreenHigh);
+            grover.setAClass(mythology);
+
+            StudentEntity annabeth = new StudentEntity();
+            annabeth.setName("Annabeth");
+            annabeth.setEmail("annabeth@gmail.com");
+            annabeth.setDob(LocalDate.of(1997, JANUARY,12));
+            annabeth.setStudentSchool(starlightAcademy);
+            annabeth.setAClass(darkArtsDefense);
+
+            StudentEntity tom = new StudentEntity();
+            tom.setName("Tom");
+            tom.setEmail("tom@gmail.com");
+            tom.setDob(LocalDate.of(1995, APRIL,12));
+            tom.setStudentSchool(evergreenHigh);
+            tom.setAClass(cryptology);
+
+            StudentEntity jhon = new StudentEntity();
+            jhon.setName("Jhon");
+            jhon.setEmail("jhon@gmail.com");
+            jhon.setDob(LocalDate.of(1995, APRIL,12));
+            jhon.setStudentSchool(starlightAcademy);
+            jhon.setAClass(darkArtsDefense);
+
+            StudentEntity aria = new StudentEntity();
+            aria.setName("Aria");
+            aria.setEmail("aria@gmail.com");
+            aria.setDob(LocalDate.of(1995, APRIL,12));
+            aria.setStudentSchool(evergreenHigh);
+            aria.setAClass(cryptology);
+
+            studentRepository.saveAll(
+                    List.of(grover, annabeth, tom, jhon, aria)
             );
         };
 
