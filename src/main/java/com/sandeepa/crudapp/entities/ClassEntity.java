@@ -18,7 +18,8 @@ public class ClassEntity {
     private Long id;
     @NonNull private String name;
 
-    @OneToOne(mappedBy = "aClass")
+    @OneToOne
+    @JoinColumn(name = "teacher_fk", referencedColumnName = "id")
     private TeacherEntity teacher;
 
 }

@@ -23,9 +23,12 @@ public class TeacherEntity {
     @Transient
     private Integer age;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "class_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "teacher")
     private ClassEntity aClass;
+
+    @ManyToOne
+    @JoinColumn(name = "school_fk", referencedColumnName = "id")
+    private SchoolEntity teacherSchool;
 
     public Integer getAge() {
         return Period.between(this.dob, LocalDate.now()).getYears();

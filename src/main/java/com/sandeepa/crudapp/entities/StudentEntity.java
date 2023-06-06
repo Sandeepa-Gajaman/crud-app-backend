@@ -35,6 +35,10 @@ public class StudentEntity {
     @Transient
     private Integer age;
 
+    @ManyToOne
+    @JoinColumn(name = "school_fk", referencedColumnName = "id")
+    private SchoolEntity studentSchool;
+
     //Calculate student's age
     public Integer getAge() {
         return Period.between(this.dob, LocalDate.now()).getYears();

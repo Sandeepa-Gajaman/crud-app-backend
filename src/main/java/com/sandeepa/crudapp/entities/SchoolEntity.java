@@ -20,9 +20,11 @@ public class SchoolEntity {
     @NonNull private String name;
     @NonNull private String address;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "school_fk", referencedColumnName = "id")
+    @OneToMany(mappedBy = "studentSchool", cascade = CascadeType.ALL)
     List<StudentEntity> students = new ArrayList<>();
+
+    @OneToMany(mappedBy = "teacherSchool", cascade = CascadeType.ALL)
+    List<TeacherEntity> teachers = new ArrayList<>();
 
     /*
     To create the below constructor use the @RequiredArgsConstructor annotation with the @NonNull annotation
