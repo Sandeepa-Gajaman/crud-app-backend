@@ -108,4 +108,13 @@ public class StudentService {
             student.setEmail(email);
         }
     }
+
+    public List<StudentDto> searchStudentByKeyword(String keyword) {
+        List<StudentEntity> studentEntities = studentRepository.searchStudentByKeyword(keyword);
+
+        return studentEntities.stream()
+                .map(student -> new StudentDto(student.getName(),student.getEmail(), student.getDob(),
+                        student.getAge(), student.getSchool().getName(), student.getAClass().getName()))
+                .collect(Collectors.toList());
+    }
 }

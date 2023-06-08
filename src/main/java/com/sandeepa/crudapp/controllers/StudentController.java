@@ -72,4 +72,9 @@ public class StudentController {
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String email) {
         studentService.updateStudent(studentId, name, email);}
+
+    @GetMapping(path = "/search")
+    public List<StudentDto> searchStudents(@RequestParam("keyword") String keyword) {
+        return studentService.searchStudentByKeyword(keyword);
+    }
 }
