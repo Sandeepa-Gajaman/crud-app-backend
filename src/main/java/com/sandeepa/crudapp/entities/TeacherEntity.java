@@ -28,7 +28,7 @@ public class TeacherEntity {
 
     @ManyToOne
     @JoinColumn(name = "school_id", referencedColumnName = "id")
-    private SchoolEntity teacherSchool;
+    private SchoolEntity school;
 
     public Integer getAge() {
         return Period.between(this.dob, LocalDate.now()).getYears();

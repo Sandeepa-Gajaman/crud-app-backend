@@ -20,10 +20,10 @@ public class SchoolEntity {
     @NonNull private String name;
     @NonNull private String address;
 
-    @OneToMany(mappedBy = "studentSchool", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
     List<StudentEntity> students = new ArrayList<>();
 
-    @OneToMany(mappedBy = "teacherSchool", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
     List<TeacherEntity> teachers = new ArrayList<>();
 
     /*

@@ -10,7 +10,6 @@ import com.sandeepa.crudapp.repositories.StudentRepository;
 import com.sandeepa.crudapp.repositories.TeacherRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -55,22 +54,22 @@ public class DbDataConfig {
             TeacherEntity professorAlastairHawthorne = new TeacherEntity();
             professorAlastairHawthorne.setName("Professor Alastair Hawthorne");
             professorAlastairHawthorne.setDob(LocalDate.of(1957, MAY, 11));
-            professorAlastairHawthorne.setTeacherSchool(evergreenHigh);
+            professorAlastairHawthorne.setSchool(evergreenHigh);
 
             TeacherEntity missCassandraEvergreen = new TeacherEntity();
             missCassandraEvergreen.setName("Miss Cassandra Evergreen");
             missCassandraEvergreen.setDob(LocalDate.of(1954, JUNE, 10));
-            missCassandraEvergreen.setTeacherSchool(starlightAcademy);
+            missCassandraEvergreen.setSchool(starlightAcademy);
 
             TeacherEntity professorTheodoreBlackthorn = new TeacherEntity();
             professorTheodoreBlackthorn.setName("Professor Theodore Blackthorn");
             professorTheodoreBlackthorn.setDob(LocalDate.of(1957, MAY, 24));
-            professorTheodoreBlackthorn.setTeacherSchool(starlightAcademy);
+            professorTheodoreBlackthorn.setSchool(starlightAcademy);
 
             TeacherEntity professorReginaldFirestone = new TeacherEntity();
             professorReginaldFirestone.setName("Professor Reginald Firestone");
             professorReginaldFirestone.setDob(LocalDate.of(1957, MAY, 12));
-            professorReginaldFirestone.setTeacherSchool(evergreenHigh);
+            professorReginaldFirestone.setSchool(evergreenHigh);
 
             teacherRepository.saveAll(
                     List.of(professorAlastairHawthorne,missCassandraEvergreen,professorTheodoreBlackthorn,
@@ -103,35 +102,35 @@ public class DbDataConfig {
             grover.setName("Grover");
             grover.setEmail("grover@gmail.com");
             grover.setDob(LocalDate.of(1998, JULY,12));
-            grover.setStudentSchool(evergreenHigh);
+            grover.setSchool(evergreenHigh);
             grover.setAClass(mythology);
 
             StudentEntity annabeth = new StudentEntity();
             annabeth.setName("Annabeth");
             annabeth.setEmail("annabeth@gmail.com");
             annabeth.setDob(LocalDate.of(1997, JANUARY,12));
-            annabeth.setStudentSchool(starlightAcademy);
+            annabeth.setSchool(starlightAcademy);
             annabeth.setAClass(darkArtsDefense);
 
             StudentEntity tom = new StudentEntity();
             tom.setName("Tom");
             tom.setEmail("tom@gmail.com");
             tom.setDob(LocalDate.of(1995, APRIL,12));
-            tom.setStudentSchool(evergreenHigh);
+            tom.setSchool(evergreenHigh);
             tom.setAClass(cryptology);
 
             StudentEntity jhon = new StudentEntity();
             jhon.setName("Jhon");
             jhon.setEmail("jhon@gmail.com");
             jhon.setDob(LocalDate.of(1995, APRIL,12));
-            jhon.setStudentSchool(starlightAcademy);
+            jhon.setSchool(starlightAcademy);
             jhon.setAClass(darkArtsDefense);
 
             StudentEntity aria = new StudentEntity();
             aria.setName("Aria");
             aria.setEmail("aria@gmail.com");
             aria.setDob(LocalDate.of(1995, APRIL,12));
-            aria.setStudentSchool(evergreenHigh);
+            aria.setSchool(evergreenHigh);
             aria.setAClass(cryptology);
 
             studentRepository.saveAll(

@@ -37,7 +37,7 @@ public class StudentEntity {
 
     @ManyToOne
     @JoinColumn(name = "school_id", referencedColumnName = "id")
-    private SchoolEntity studentSchool;
+    private SchoolEntity school;
 
     @ManyToOne
     @JoinColumn(name = "class_id", referencedColumnName = "id")
