@@ -1,17 +1,18 @@
 package com.sandeepa.crudapp.dtos;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 @Data
 public class StudentDto {
-    private String name;
-    private String email;
-    private LocalDate dob;
-    private Integer age;
+    @NonNull private String name;
+    @NonNull private String email;
+    @NonNull private LocalDate dob;
+    @NonNull private Integer age;
+    private String schoolName;
+    @NonNull private String className;
 }

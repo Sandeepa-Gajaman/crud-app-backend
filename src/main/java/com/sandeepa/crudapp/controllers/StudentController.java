@@ -44,9 +44,9 @@ public class StudentController {
     }
 
     @GetMapping(path = "{studentId}")
-    public ResponseEntity<StudentEntity> getStudentById(@PathVariable("studentId") Long studentId) {
+    public ResponseEntity<StudentDto> getStudentById(@PathVariable("studentId") Long studentId) {
 
-        StudentEntity studentById = studentService.findStudentById(studentId);
+        StudentDto studentById = studentService.findStudentById(studentId);
 
         if(studentById != null){
             return ResponseEntity.ok(studentById);
