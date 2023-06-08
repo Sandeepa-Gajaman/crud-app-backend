@@ -42,13 +42,13 @@ public class SchoolService {
         return schoolDetails;
     }
 
-    public SchoolDto getSchoolById(Long schoolId) {
+    public SchoolDto getSchoolByIdWithStudents(Long schoolId) {
         SchoolEntity school = schoolRepository.findById(schoolId)
                 .orElseThrow(() -> new IllegalStateException("School with " + schoolId + " id not found!"));
 
         List<StudentDto> studentDtos = school.getStudents().stream()
                 .map(student -> new StudentDto(student.getName(),student.getEmail(),
-                        student.getDob(), student.getAge()))
+                        student.getDob(), student.getAge(), student.getSchool().getName(), student.getAClass().getName()))
                 .collect(Collectors.toList());
 
         return new SchoolDto(school.getName(), school.getAddress(), studentDtos);

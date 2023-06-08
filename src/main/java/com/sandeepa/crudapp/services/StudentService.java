@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -52,8 +53,19 @@ public class StudentService {
 
     }
 
-    public StudentEntity findStudentById(Long studentId) {
-        return studentRepository.findById(studentId).orElse(null);
+    public StudentDto findStudentById(Long studentId) {
+
+        StudentEntity studentEntity = studentRepository.findById(studentId).orElse(null);
+
+        StudentDto studentDto = new StudentDto();
+        studentDto.setName(studentEntity.getName());
+        studentDto.setAge(studentEntity.getAge());
+        studentDto.setEmail(studentEntity.getEmail());
+        studentDto.setDob(studentEntity.getDob());
+        studentDto.setSchoolName(studentEntity.getSchool().getName());
+        studentDto.setClassName(studentEntity.getAClass().getName());
+
+        return studentDto;
     }
 
     public void addNewStudent(StudentEntity student) {
@@ -95,5 +107,14 @@ public class StudentService {
 
             student.setEmail(email);
         }
+    }
+
+    public List<StudentDto> searchStudentByKeyword(String keyword) {
+        List<StudentEntity> studentEntities = studentRepository.searchStudentByKeyword(keyword);
+
+        return studentEntities.stream()
+                .map(student -> new StudentDto(student.getName(),student.getEmail(), student.getDob(),
+                        student.getAge(), student.getSchool().getName(), student.getAClass().getName()))
+                .collect(Collectors.toList());
     }
 }
