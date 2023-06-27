@@ -108,33 +108,40 @@ public class DbDataConfig {
             StudentEntity annabeth = new StudentEntity();
             annabeth.setName("Annabeth");
             annabeth.setEmail("annabeth@gmail.com");
-            annabeth.setDob(LocalDate.of(1997, JANUARY,12));
+            annabeth.setDob(LocalDate.of(1997, JANUARY,01));
             annabeth.setSchool(starlightAcademy);
             annabeth.setAClass(darkArtsDefense);
 
             StudentEntity tom = new StudentEntity();
             tom.setName("Tom");
             tom.setEmail("tom@gmail.com");
-            tom.setDob(LocalDate.of(1995, APRIL,12));
+            tom.setDob(LocalDate.of(1995, APRIL,26));
             tom.setSchool(evergreenHigh);
             tom.setAClass(cryptology);
 
             StudentEntity jhon = new StudentEntity();
             jhon.setName("Jhon");
             jhon.setEmail("jhon@gmail.com");
-            jhon.setDob(LocalDate.of(1995, APRIL,12));
+            jhon.setDob(LocalDate.of(1996, DECEMBER,31));
             jhon.setSchool(starlightAcademy);
             jhon.setAClass(darkArtsDefense);
 
             StudentEntity aria = new StudentEntity();
             aria.setName("Aria");
             aria.setEmail("aria@gmail.com");
-            aria.setDob(LocalDate.of(1995, APRIL,12));
+            aria.setDob(LocalDate.of(1991, MARCH,07));
             aria.setSchool(evergreenHigh);
             aria.setAClass(cryptology);
 
+            StudentEntity tony = new StudentEntity();
+            aria.setName("Tony");
+            aria.setEmail("tony@gmail.com");
+            aria.setDob(LocalDate.of(1992, JANUARY,17));
+            aria.setSchool(evergreenHigh);
+            aria.setAClass(darkArtsDefense);
+
             studentRepository.saveAll(
-                    List.of(grover, annabeth, tom, jhon, aria)
+                    List.of(grover, annabeth, tom, jhon, aria, tony)
             );
         };
 
