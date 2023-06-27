@@ -140,6 +140,13 @@ public class DbDataConfig {
             aria.setSchool(evergreenHigh);
             aria.setAClass(darkArtsDefense);
 
+            StudentEntity clara = new StudentEntity();
+            aria.setName("Clara");
+            aria.setEmail("clara@gmail.com");
+            aria.setDob(LocalDate.of(1996, FEBRUARY,17));
+            aria.setSchool(evergreenHigh);
+            aria.setAClass(darkArtsDefense);
+
             studentRepository.saveAll(
                     List.of(grover, annabeth, tom, jhon, aria, tony)
             );
