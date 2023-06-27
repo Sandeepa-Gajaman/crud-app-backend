@@ -148,7 +148,7 @@ public class DbDataConfig {
             aria.setAClass(darkArtsDefense);
 
             studentRepository.saveAll(
-                    List.of(grover, annabeth, tom, jhon, aria, tony)
+                    List.of(grover, annabeth, tom, jhon, aria, tony, clara)
             );
         };
 
