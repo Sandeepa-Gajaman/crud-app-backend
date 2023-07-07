@@ -141,8 +141,8 @@ public class DbDataConfig {
             aria.setAClass(darkArtsDefense);
 
             StudentEntity clara = new StudentEntity();
-            aria.setName("Clara");
-            aria.setEmail("clara@gmail.com");
+            aria.setName("Clarai");
+            aria.setEmail("clarai@gmail.com");
             aria.setDob(LocalDate.of(1996, FEBRUARY,17));
             aria.setSchool(evergreenHigh);
             aria.setAClass(darkArtsDefense);
