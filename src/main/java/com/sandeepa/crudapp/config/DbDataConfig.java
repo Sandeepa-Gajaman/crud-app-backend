@@ -134,8 +134,8 @@ public class DbDataConfig {
             aria.setAClass(cryptology);
 
             StudentEntity tony = new StudentEntity();
-            aria.setName("Tony");
-            aria.setEmail("tony@gmail.com");
+            aria.setName("Tonyf");
+            aria.setEmail("tonyf@gmail.com");
             aria.setDob(LocalDate.of(1992, JANUARY,17));
             aria.setSchool(evergreenHigh);
             aria.setAClass(darkArtsDefense);
