@@ -27,17 +27,7 @@ public class DbDataConfig {
                                       TeacherRepository teacherRepository, ClassRepository classRepository) {
         return args -> {
 
-            //School
-//
-//            SchoolEntity evergreenHigh = new SchoolEntity(
-//                    "Evergreen High",
-//                    "Greenland"
-//            );
-//            SchoolEntity phoenixAcademy = new SchoolEntity(
-//                    "Phoenix Academy",
-//                    "Japan"
-//            );
-//
+            //Schools
             SchoolEntity starlightAcademy = new SchoolEntity();
             starlightAcademy.setName("Starlight Academy");
             starlightAcademy.setAddress("U.S");
@@ -134,18 +124,18 @@ public class DbDataConfig {
             aria.setAClass(cryptology);
 
             StudentEntity tony = new StudentEntity();
-            aria.setName("Tonyf");
-            aria.setEmail("tonyf@gmail.com");
-            aria.setDob(LocalDate.of(1992, JANUARY,17));
-            aria.setSchool(evergreenHigh);
-            aria.setAClass(darkArtsDefense);
+            tony.setName("Tony");
+            tony.setEmail("tony@gmail.com");
+            tony.setDob(LocalDate.of(1992, JANUARY,17));
+            tony.setSchool(evergreenHigh);
+            tony.setAClass(darkArtsDefense);
 
             StudentEntity clara = new StudentEntity();
-            aria.setName("Clarai");
-            aria.setEmail("clarai@gmail.com");
-            aria.setDob(LocalDate.of(1996, FEBRUARY,17));
-            aria.setSchool(evergreenHigh);
-            aria.setAClass(darkArtsDefense);
+            clara.setName("Clara");
+            clara.setEmail("clarai@gmail.com");
+            clara.setDob(LocalDate.of(1996, FEBRUARY,17));
+            clara.setSchool(evergreenHigh);
+            clara.setAClass(darkArtsDefense);
 
             studentRepository.saveAll(
                     List.of(grover, annabeth, tom, jhon, aria, tony, clara)
